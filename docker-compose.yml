@@ -46,6 +46,9 @@ services:
       - PUID=568
       - PGID=568
       - TZ=Asia/Kolkata # Set your timezone
+      - ACTUAL_HTTPS_KEY=/data/actual-budget.mango-catla.ts.net.key
+      - ACTUAL_HTTPS_CERT=/data/actual-budget.mango-catla.ts.net.crt
+      - ACTUAL_PORT=5006 # Port to expose the application
     volumes:
       - ${SERVICE_DATA_DIR}/actual-data:/data
     depends_on:
