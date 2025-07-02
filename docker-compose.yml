@@ -7,11 +7,11 @@ services:
     container_name: tailscale-${SERVICE} # Name for local container management
     hostname: ${SERVICE} # Name used within your Tailscale environment
     ports:
-      - '5006:5006'
+      - '5006:443'
     environment:
       - TS_AUTHKEY=${TS_AUTHKEY}
       - TS_STATE_DIR=/var/lib/tailscale
-      - TS_SERVE_CONFIG=/config/serve.json # Tailsacale Serve configuration to expose the web interface on your local Tailnet - remove this line if not required
+      # - TS_SERVE_CONFIG=/config/serve.json # Tailsacale Serve configuration to expose the web interface on your local Tailnet - remove this line if not required
       - TS_USERSPACE=false
       - TS_ENABLE_HEALTH_CHECK=true              # Enable healthcheck endpoint: "/healthz"
       - TS_LOCAL_ADDR_PORT=127.0.0.1:41234       # The <addr>:<port> for the healthz endpoint
@@ -48,7 +48,7 @@ services:
       - TZ=Asia/Kolkata # Set your timezone
       - ACTUAL_HTTPS_KEY=/data/actual-budget.mango-catla.ts.net.key
       - ACTUAL_HTTPS_CERT=/data/actual-budget.mango-catla.ts.net.crt
-      - ACTUAL_PORT=5006 # Port to expose the application
+      - ACTUAL_PORT=443 # Port to expose the application
     volumes:
       - ${SERVICE_DATA_DIR}/actual-data:/data
     depends_on:
